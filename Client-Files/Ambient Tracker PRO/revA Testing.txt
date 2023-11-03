@@ -1,0 +1,41 @@
+--Ambient Tracker PRO revA - Test Report--
+--Date 25-Jan-2023--
+--TESTS PERFORMED ON BOARD #1--
+
+! VOLTLINK connector had cold solder joint from JLCPCB assembly, had to be reworked !
+
++5V test point voltage = 4.8V > OK
+Main 3V3 voltage test > OK
+Clean 3V3 voltage test > OK
+Sensor 1V8 voltage test > OK
+Sensor 3V3 voltage test > OK
+POWER via USB-C > OK
+RGB LED function > OK
+User SW function > OK
+I2C Scan function > OK Found address: 41 (0x29) & 119 (0x77)
+BME680 read > OK
+ALS read > OK
+PMS5003 read > OK
+Radar sensor read > OK
+UWB read device ID > OK "DEVICE ID: deca0302"
+Ethernet W5500 PWR_EN via GPIO test > OK 
+>Ethernet W5500 10/100 test
+>RJ45 LEDs?
+
+PoE PSU > OK (POE_P/POE_N measured 46.8V DC, +5VP measured 5.0V) *tested with Ubiquiti U-POE-AF
+5VP rail ripple > 50mV pkpk measured on C28 aprox 100Khz Freq
+>check ripple on radar sensor rail compare?
+
+Thermal test with all peripherals enabled
+>Total current/power on PoE?
+>Total current/power on USB?
+-R10 gets hot ~43 degC at ambient of 23 with minimal load. 
+
+TODO revB
+1.add GND test point clip
+2.increase package size for R10, increase dissipation capability in copper plane, maybe increase its value?
+3.update pinout of PMS sensor, reverse it.
+4.RJ45 LEDs seem dim, decrease resistor value?
+
+>FIRMWARE TESTING<
+Check operation of all SPI interfaces at same time: Ethernet, Radar, UWB
